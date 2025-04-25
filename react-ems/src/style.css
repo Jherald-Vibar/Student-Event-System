@@ -1,0 +1,80 @@
+.login {
+    position: relative;
+    background: linear-gradient(to left, white 50%, #3E6299 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 1s ease-out;
+    color: black;
+    box-shadow: 3px 3px 3px black;
+}
+
+.login:hover {
+    background-position: left bottom;
+    color: white;
+}
+
+.adminRole:hover {
+    background-color: white;
+    font-weight: 800;
+    border-radius: 5px;
+    font-size: xx-large;
+    transition-duration: 1s;
+}
+
+.adminRole:hover .adminIcon {
+    transition: 1s;
+    scale: 1.3;
+}
+
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+
+
+  .loading-text {
+    color: #fff;
+    font-size: 1.5em;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.logoutButton {
+    position: relative;
+    background: linear-gradient(to right, white 50%, #3E6299 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: background-position 1s ease-out;
+    color: black;
+    box-shadow: 3px 3px 3px black;
+}
+
+.logoutButton:hover {
+    background-position: right bottom ;
+    color: white;
+}

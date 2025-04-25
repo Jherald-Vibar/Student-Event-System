@@ -5,6 +5,7 @@ import GuestLayout from "./components/GuestLayout";
 import Register from "./views/Register";
 import AuthenticatedLayout from "./components/AuthenticatedLayout";
 import Dashboard from "./views/Dashboard";
+import AdminRole from "./views/AdminRole";
 
 const router =  createBrowserRouter ([
   {
@@ -25,13 +26,19 @@ const router =  createBrowserRouter ([
       },
     ]
   },
+
   {
-    path: '/user',
+    path: '/admin',
     element: <AuthenticatedLayout/>,
     children: [
       {
         path: 'dashboard',
         element: <Dashboard/>
+      },
+
+      {
+        path: 'admin-role',
+        element: <AdminRole/>
       },
     ]
   }

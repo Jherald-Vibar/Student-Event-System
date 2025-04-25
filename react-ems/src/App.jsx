@@ -1,6 +1,7 @@
 // src/App.jsx
 import './index.css';
 import { UserIcon, CalendarDaysIcon, TicketIcon } from '@heroicons/react/24/solid';
+import logo from "./images/SPCC-EMS.png";
 
  function App() {
   return (
@@ -8,14 +9,19 @@ import { UserIcon, CalendarDaysIcon, TicketIcon } from '@heroicons/react/24/soli
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className='flex justify-between items-center'>
+          <img src={logo} alt="" className='w-12 h-12 mr-3' />
           <h1 className="text-2xl font-bold text-[#3E6299]">Student Events</h1>
+          </div>
           <nav className="space-x-4">
             <a href="#" className="text-gray-600 hover:text-[#3E6299]">Home</a>
             <a href="#" className="text-gray-600 hover:text-[#3E6299]">Events</a>
             <a href="#" className="text-gray-600 hover:text-[#3E6299]">My Tickets</a>
             <a href="#" className="text-gray-600 hover:text-[#3E6299]">Profile</a>
           </nav>
+          <a href="/guest/login">
           <UserIcon className="h-8 w-8 text-gray-600 hover:text-[#3E6299] cursor-pointer" />
+          </a>
         </div>
       </header>
 

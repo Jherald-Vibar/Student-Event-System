@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Passport\PersonalAccessTokenResult;
 
 class AuthController extends Controller
 {
@@ -23,11 +22,12 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            $token = $user->createToken('EMS')->accessToken;
+            $token = $user->createToken('EMS')->plainTextToken;
 
             return response()->json([
                 'token' => $token,
             ]);
+
         } else {
 
             return response()->json([
@@ -49,7 +49,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $validated = $validator->validate();
+       $validated = $validator->validate();
 
         $user = new User();
 
@@ -60,11 +60,16 @@ class AuthController extends Controller
             'password' => $validated['password'],
         ]);
 
-        return response()->json([
-            'message' => 'Registration successful. Please check your credentials.',
-        ], 200);
-
 
     }
 
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Logged out successfully',
+        ]);
+    }
 }

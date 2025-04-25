@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/auth/check', function (Request $request) {
+    return response()->json(['authenticated' => true]);
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
+Route::post('admin', [AdminController::class, 'adminStore']);
+Route::get('/admins', [AdminController::class, 'getAdmin']);
+Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+
