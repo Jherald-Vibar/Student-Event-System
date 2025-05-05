@@ -63,7 +63,14 @@ export default function AdminRole() {
       }, []);
 
       if (loading) {
-        return <div>Loading...</div>;
+        return (
+          <div className="loading-screen">
+            <div>
+              <div className="spinner"></div>
+              <div className="loading-text">Loading...</div>
+            </div>
+          </div>
+        );
       }
 
       if (error) {

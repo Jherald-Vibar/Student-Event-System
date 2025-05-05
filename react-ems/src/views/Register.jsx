@@ -7,14 +7,16 @@ import axiosClient from '../views/axios.js';
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [first_name, setFName] = useState('');
+  const [middle_name, setMName] = useState('');
+  const [last_name, setLName] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Both fields are required.');
+    if (!email || !password ||!first_name ||!last_name) {
+      setError('These fields are required.');
       return;
     }
 
@@ -22,7 +24,9 @@ export default function Register() {
       const response = await axiosClient.post('/register', {
         email,
         password,
-        name,
+        first_name,
+        middle_name,
+        last_name,
       });
 
       navigate('/guest/login');
@@ -95,17 +99,51 @@ export default function Register() {
                           <div className="relative mb-4" data-twe-input-wrapper-init>
                             <input
                               type="text"
-                              name="name"
+                              name="first_name"
                               className="peer block w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
                               id="registerUsername"
-                              placeholder="Username"
-                              onChange={(e) => setName(e.target.value)}
+                              placeholder="First Name"
+                              onChange={(e) => setFName(e.target.value)}
                             />
                             <label
                               htmlFor="registerUsername"
                               className="pointer-events-none absolute left-3 top-0 pt-[0.37rem] text-neutral-500 transition-all peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary dark:text-neutral-400"
                             >
-                              Username
+                              First Name
+                            </label>
+                          </div>
+
+                          <div className="relative mb-4" data-twe-input-wrapper-init>
+                            <input
+                              type="text"
+                              name="middle_name"
+                              className="peer block w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
+                              id="registerUsername"
+                              placeholder="Middle Name"
+                              onChange={(e) => setMName(e.target.value)}
+                            />
+                            <label
+                              htmlFor="registerUsername"
+                              className="pointer-events-none absolute left-3 top-0 pt-[0.37rem] text-neutral-500 transition-all peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary dark:text-neutral-400"
+                            >
+                              Middle Name
+                            </label>
+                          </div>
+
+                          <div className="relative mb-4" data-twe-input-wrapper-init>
+                            <input
+                              type="text"
+                              name="last_name"
+                              className="peer block w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
+                              id="registerUsername"
+                              placeholder="Last Name"
+                              onChange={(e) => setLName(e.target.value)}
+                            />
+                            <label
+                              htmlFor="registerUsername"
+                              className="pointer-events-none absolute left-3 top-0 pt-[0.37rem] text-neutral-500 transition-all peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary dark:text-neutral-400"
+                            >
+                              Last Name
                             </label>
                           </div>
 

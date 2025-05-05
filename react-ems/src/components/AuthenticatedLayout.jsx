@@ -1,3 +1,4 @@
+// src/layouts/AuthenticatedLayout.jsx
 import { useState, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axiosClient, { getCsrfToken } from '../views/axios';
@@ -9,14 +10,9 @@ export default function AuthenticatedLayout() {
   useEffect(() => {
     getCsrfToken()
       .then(() => {
-
         axiosClient.get('/auth/check')
-          .then((response) => {
-            setIsAuthenticated(true);
-          })
-          .catch(() => {
-            setIsAuthenticated(false);
-          })
+          .then(() => setIsAuthenticated(true))
+          .catch(() => setIsAuthenticated(false))
           .finally(() => setLoading(false));
       })
       .catch(() => {
@@ -26,23 +22,12 @@ export default function AuthenticatedLayout() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="loading-screen">
-        <div>
-          <div className="spinner"></div>
-          <div className="loading-text">Loading...</div>
-        </div>
-      </div>
-    );
+    return <div className="text-center py-10">Loading...</div>;
   }
 
   if (!isAuthenticated) {
     return <Navigate to="/guest/login" replace />;
   }
 
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 }

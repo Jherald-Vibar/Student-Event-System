@@ -27,10 +27,16 @@ export default function Login() {
         password,
       });
 
+      const role = response.data.role;
       const token = response.data.token;
       localStorage.setItem('authToken', token);
+      localStorage.setItem('userRole', role);
 
-      navigate('/admin/dashboard');
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'student') {
+        navigate('/student/dashboard');
+      }
     // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setError('Login failed. Please check your credentials.');

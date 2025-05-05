@@ -44,4 +44,9 @@ class AdminController extends Controller
 
         return response()->json($admins);
     }
+
+
+    public function storeEventAdmin(Request $request) {
+
+    }
 }

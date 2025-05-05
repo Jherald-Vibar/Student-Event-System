@@ -82,12 +82,19 @@ function Sidebar() {
         </div>
       </div>
       <hr className="my-2 border-blue-gray-50" />
-      <div role="button"
-        className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
-        <div className="grid mr-4 place-items-center">
-          <CalendarIcon className='h-6 w-6 text-blue-gray-700'/>
+      <div className="relative block w-full">
+        <div role="button"
+          className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+          <button type="button" onClick={() => window.location.href = "/admin/admin-event"}
+            className="adminRole flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-blue-gray-100 text-blue-gray-700 hover:text-blue-gray-900">
+            <div className="grid mr-4 place-items-center">
+              <CalendarIcon className="adminIcon h-6 w-6 text-blue-gray-700" />
+            </div>
+            <p className="block mr-auto font-sans text-base antialiased leading-relaxed text-blue-gray-900">
+              Admin Event Management
+            </p>
+          </button>
         </div>
-        Attendance Monitoring
       </div>
       <div role="button"
         className="flex items-center w-full p-3 leading-tight transition-all rounded-lg outline-none text-start hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
