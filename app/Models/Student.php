@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -18,6 +17,7 @@ class Student extends Authenticatable
         'last_name',
         'email',
         'password',
+        'event_id',
     ];
 
     protected $hidden = [
@@ -27,4 +27,9 @@ class Student extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class, 'event_id');
+    }
 }

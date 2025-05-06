@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('event_name', 255);
             $table->date('date');
             $table->time('time');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('venue_id')->nullable();
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('student_id')->nullable();

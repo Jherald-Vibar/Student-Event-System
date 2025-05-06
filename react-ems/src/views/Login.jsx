@@ -29,8 +29,10 @@ export default function Login() {
 
       const role = response.data.role;
       const token = response.data.token;
+      const adminId = response.data.admin_id;
       localStorage.setItem('authToken', token);
       localStorage.setItem('userRole', role);
+      localStorage.setItem('admin_id', adminId);
 
       if (role === 'admin') {
         navigate('/admin/dashboard');

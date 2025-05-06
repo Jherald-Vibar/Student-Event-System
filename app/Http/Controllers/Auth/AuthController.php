@@ -25,7 +25,8 @@ class AuthController extends Controller
             $token = $user->createToken('admin')->plainTextToken;
             return response()->json([
                 'token' => $token,
-                'role' => 'admin'
+                'role' => 'admin',
+                'admin_id' => $user->id,
             ]);
         } elseif(Auth::guard('student')->attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
             $student = Auth::guard('student')->user();
